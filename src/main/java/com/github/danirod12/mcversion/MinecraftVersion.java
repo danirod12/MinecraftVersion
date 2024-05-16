@@ -15,7 +15,8 @@ public class MinecraftVersion {
     private static final Version version;
 
     static {
-        if (new String(defaultPackage).equals(MinecraftVersion.class.getPackageName())) {
+        Package aPackage = MinecraftVersion.class.getPackage();
+        if (aPackage != null && new String(defaultPackage).equals(aPackage.getName())) {
             throw new RuntimeException("You must rename package name to use " + MinecraftVersion.class.getName());
         }
 
