@@ -72,32 +72,32 @@ public class MinecraftVersion {
 
     // https://minecraft.fandom.com/wiki/Protocol_version
     public enum NMSVersion {
-        UNKNOWN("unknown", "0.0.0", "0.0.0"),
-        v1_8_R1("v1_8_R1", "1.8.0", "1.8.2"),
-        v1_8_R2("v1_8_R2", "1.8.3", "1.8.3"),
-        v1_8_R3("v1_8_R3", "1.8.4", "1.8.9"),
-        v1_9_R1("v1_9_R1", "1.9.0", "1.9.2"),
-        v1_9_R2("v1_9_R2", "1.9.3", "1.9.4"),
-        v1_10_R1("v1_10_R1", "1.10.0", "1.10.2"),
-        v1_11_R1("v1_11_R1", "1.11.0", "1.11.2"),
-        v1_12_R1("v1_12_R1", "1.12.0", "1.12.2"),
-        v1_13_R1("v1_13_R1", "1.13.0", "1.13.0"),
-        v1_13_R2("v1_13_R2", "1.13.1", "1.13.2"),
-        v1_14_R1("v1_14_R1", "1.14.0", "1.14.4"),
-        v1_15_R1("v1_15_R1", "1.15.0", "1.15.2"),
-        v1_16_R1("v1_16_R1", "1.16.0", "1.16.1"),
-        v1_16_R2("v1_16_R2", "1.16.2", "1.16.3"),
-        v1_16_R3("v1_16_R3", "1.16.4", "1.16.5"),
-        v1_17_R1("v1_17_R1", "1.17.0", "1.17.1"),
-        v1_18_R1("v1_18_R1", "1.18.0", "1.18.1"),
-        v1_18_R2("v1_18_R2", "1.18.2", "1.18.2"),
-        v1_19_R1("v1_19_R1", "1.19.0", "1.19.2"),
-        v1_19_R2("v1_19_R2", "1.19.3", "1.19.3"),
-        v1_19_R3("v1_19_R3", "1.19.4", "1.19.4"),
-        v1_20_R1("v1_20_R1", "1.20.0", "1.20.1"),
-        v1_20_R2("v1_20_R2", "1.20.2", "1.20.2"),
-        v1_20_R3("v1_20_R3", "1.20.3", "1.20.4"),
-        v1_20_R4("v1_20_R4", "1.20.5", "1.20.6"),
+        UNKNOWN("unknown", "0.0.0", "0.0.0", -1, -1),
+        v1_8_R1("v1_8_R1", "1.8.0", "1.8.2", 47, -1),
+        v1_8_R2("v1_8_R2", "1.8.3", "1.8.3", 47, -1),
+        v1_8_R3("v1_8_R3", "1.8.4", "1.8.9", 47, -1),
+        v1_9_R1("v1_9_R1", "1.9.0", "1.9.2", 109, 176),
+        v1_9_R2("v1_9_R2", "1.9.3", "1.9.4", 110, 184),
+        v1_10_R1("v1_10_R1", "1.10.0", "1.10.2", 210, 512),
+        v1_11_R1("v1_11_R1", "1.11.0", "1.11.2", 316, 922),
+        v1_12_R1("v1_12_R1", "1.12.0", "1.12.2", 340, 1343),
+        v1_13_R1("v1_13_R1", "1.13.0", "1.13.0", 393, 1519),
+        v1_13_R2("v1_13_R2", "1.13.1", "1.13.2", 404, 1631),
+        v1_14_R1("v1_14_R1", "1.14.0", "1.14.4", 498, 1976),
+        v1_15_R1("v1_15_R1", "1.15.0", "1.15.2", 578, 2230),
+        v1_16_R1("v1_16_R1", "1.16.0", "1.16.1", 736, 2567),
+        v1_16_R2("v1_16_R2", "1.16.2", "1.16.3", 753, 2580),
+        v1_16_R3("v1_16_R3", "1.16.4", "1.16.5", 754, 2586),
+        v1_17_R1("v1_17_R1", "1.17.0", "1.17.1", 756, 2730),
+        v1_18_R1("v1_18_R1", "1.18.0", "1.18.1", 757, 2865),
+        v1_18_R2("v1_18_R2", "1.18.2", "1.18.2", 758, 2975),
+        v1_19_R1("v1_19_R1", "1.19.0", "1.19.2", 760, 3120),
+        v1_19_R2("v1_19_R2", "1.19.3", "1.19.3", 761, 3218),
+        v1_19_R3("v1_19_R3", "1.19.4", "1.19.4", 762, 3337),
+        v1_20_R1("v1_20_R1", "1.20.0", "1.20.1", 763, 3465),
+        v1_20_R2("v1_20_R2", "1.20.2", "1.20.2", 764, 3578),
+        v1_20_R3("v1_20_R3", "1.20.3", "1.20.4", 765, 3700),
+        v1_20_R4("v1_20_R4", "1.20.5", "1.20.6", 766, 3837),
         ;
 
         public static final NMSVersion MODERN_ITEM = NMSVersion.v1_13_R1;
@@ -106,11 +106,15 @@ public class MinecraftVersion {
         private final String name;
         private final Version candidateVersion;
         private final Version from;
+        private final int protocolVersion;
+        private final int dataVersion;
 
-        NMSVersion(String name, String from, String to) {
+        NMSVersion(String name, String from, String to, int protocolVersion, int dataVersion) {
             this.name = name;
             this.candidateVersion = new Version(to);
             this.from = new Version(from);
+            this.protocolVersion = protocolVersion;
+            this.dataVersion = dataVersion;
         }
 
         public String getCraftBukkitName() {
@@ -128,6 +132,18 @@ public class MinecraftVersion {
 
         public Version getFrom() {
             return from;
+        }
+
+        public int getProtocolVersion() {
+            return protocolVersion;
+        }
+
+        public boolean hasDataVersion() {
+            return this.dataVersion >= 100 /* 15w32a */;
+        }
+
+        public int getDataVersion() {
+            return dataVersion;
         }
     }
 
