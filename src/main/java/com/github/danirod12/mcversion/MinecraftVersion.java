@@ -62,6 +62,14 @@ public class MinecraftVersion {
         return possibleNmsVersion;
     }
 
+    public static boolean isAtLeast(NMSVersion version) {
+        return isAtLeast(version.getFrom());
+    }
+
+    public static boolean isAtLeast(Version ver) {
+        return version.isAtLeast(ver);
+    }
+
     // https://minecraft.fandom.com/wiki/Protocol_version
     public enum NMSVersion {
         UNKNOWN("unknown", "0.0.0", "0.0.0"),
@@ -92,6 +100,9 @@ public class MinecraftVersion {
         v1_20_R4("v1_20_R4", "1.20.5", "1.20.6"),
         ;
 
+        public static final NMSVersion MODERN_ITEM = NMSVersion.v1_13_R1;
+        public static final NMSVersion COMPOUND_ITEM = NMSVersion.v1_20_R4;
+
         private final String name;
         private final Version candidateVersion;
         private final Version from;
@@ -104,6 +115,11 @@ public class MinecraftVersion {
 
         public String getCraftBukkitName() {
             return name;
+        }
+
+        @Override
+        public String toString() {
+            return this.getCraftBukkitName();
         }
 
         public Version getCandidateVersion() {
