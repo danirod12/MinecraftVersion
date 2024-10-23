@@ -70,7 +70,8 @@ public class MinecraftVersion {
         return version.isAtLeast(ver);
     }
 
-    // https://minecraft.fandom.com/wiki/Protocol_version
+    // https://minecraft.wiki/w/Protocol_version
+    // https://minecraft.wiki/w/Data_version
     public enum NMSVersion {
         UNKNOWN("unknown", "0.0.0", "0.0.0", -1, -1),
         v1_8_R1("v1_8_R1", "1.8.0", "1.8.2", 47, -1),
@@ -98,7 +99,8 @@ public class MinecraftVersion {
         v1_20_R2("v1_20_R2", "1.20.2", "1.20.2", 764, 3578),
         v1_20_R3("v1_20_R3", "1.20.3", "1.20.4", 765, 3700),
         v1_20_R4("v1_20_R4", "1.20.5", "1.20.6", 766, 3837),
-        v1_21_R1("v1_21_R1", "1.21.0", "1.21.0", 767, 3953)
+        v1_21_R1("v1_21_R1", "1.21.0", "1.21.1", 767, 3953),
+        v1_21_R2("v1_21_R2", "1.21.2", "1.21.3", 768, 4080),
         ;
 
         public static final NMSVersion MODERN_ITEM = NMSVersion.v1_13_R1;
