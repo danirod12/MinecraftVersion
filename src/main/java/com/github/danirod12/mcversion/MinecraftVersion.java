@@ -101,6 +101,7 @@ public class MinecraftVersion {
         v1_20_R4("v1_20_R4", "1.20.5", "1.20.6", 766, 3837),
         v1_21_R1("v1_21_R1", "1.21.0", "1.21.1", 767, 3953),
         v1_21_R2("v1_21_R2", "1.21.2", "1.21.3", 768, 4080),
+        v1_21_R3("v1_21_R3", "1.21.4", "1.21.4", 769, 4189),
         ;
 
         public static final NMSVersion MODERN_ITEM = NMSVersion.v1_13_R1;
