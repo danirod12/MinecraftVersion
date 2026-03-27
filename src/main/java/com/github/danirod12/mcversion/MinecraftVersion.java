@@ -106,10 +106,12 @@ public class MinecraftVersion {
         v1_21_R5("v1_21_R5", "1.21.6", "1.21.8", 771, 4435),
         v1_21_R6("v1_21_R6", "1.21.9", "1.21.10", 773, 4554),
         v1_21_R7("v1_21_R7", "1.21.11", "1.21.11", 774, 4671),
+        v26_R1("v26_R1", "26.1", "26.1", 775, 4786),
         ;
 
         public static final NMSVersion MODERN_ITEM = NMSVersion.v1_13_R1;
         public static final NMSVersion COMPOUND_ITEM = NMSVersion.v1_20_R4;
+        public static final NMSVersion UNOBFUSCATED = NMSVersion.v26_R1;
 
         private final String name;
         private final Version candidateVersion;
